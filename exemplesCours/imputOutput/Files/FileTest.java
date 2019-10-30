@@ -35,7 +35,7 @@ class FileTest{
         //FileInputStream fis = null;
 
         
-/*         try{
+        try{
         FileInputStream fis = new FileInputStream(f1);
         FileOutputStream fos = new FileOutputStream(f2);
         
@@ -54,9 +54,9 @@ class FileTest{
         catch(IOException e) {
             e.printStackTrace();
         }
-        System.out.println("fis :"+System.currentTimeMillis()); */
+        System.out.println("fis :"+System.currentTimeMillis());
 //-----------------------------------------------------------------
-        try{
+/*         try{
             FileInputStream fis = new FileInputStream(f1);
             FileOutputStream fos = new FileOutputStream(f2);
             InputStream bis = new  BufferedInputStream(fis);
@@ -77,7 +77,7 @@ class FileTest{
         catch(IOException e) {
             e.printStackTrace();
         }
-        System.out.println("bis :"+System.currentTimeMillis());
+        System.out.println("bis :"+System.currentTimeMillis()); */
         
         }
     }

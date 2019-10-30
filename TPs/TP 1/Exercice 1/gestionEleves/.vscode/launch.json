@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - EleveTest",
+            "request": "launch",
+            "mainClass": "EleveTest"
+        }
+    ]
+}

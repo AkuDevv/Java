@@ -2,6 +2,30 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - FileChnl",
+            "request": "launch",
+            "mainClass": "FileChnl"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ObjectIOs",
+            "request": "launch",
+            "mainClass": "ObjectIOs"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ObjectIO",
+            "request": "launch",
+            "mainClass": "ObjectIO"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ObjectFile",
+            "request": "launch",
+            "mainClass": "ObjectFile"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - FileTest",
             "request": "launch",
             "mainClass": "FileTest"

@@ -1,7 +1,13 @@
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 class FileTest{
@@ -34,8 +40,9 @@ class FileTest{
         System.out.println(f1.delete()); */
         //FileInputStream fis = null;
 
+//----------------------------File I/O stream-------------------------------------------
         
-        try{
+        /*try{
         FileInputStream fis = new FileInputStream(f1);
         FileOutputStream fos = new FileOutputStream(f2);
         
@@ -55,7 +62,8 @@ class FileTest{
             e.printStackTrace();
         }
         System.out.println("fis :"+System.currentTimeMillis());
-//-----------------------------------------------------------------
+        */
+//-----------------------------------Buffered I/O stream------------------------------
 /*         try{
             FileInputStream fis = new FileInputStream(f1);
             FileOutputStream fos = new FileOutputStream(f2);
@@ -78,6 +86,54 @@ class FileTest{
             e.printStackTrace();
         }
         System.out.println("bis :"+System.currentTimeMillis()); */
-        
+
+//--------------------------------------------Data I/O stream-------------------------------
+/*        DataInputStream dis;
+        DataOutputStream dos;
+        try{
+            dos = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(f1)));
+            dos.writeByte(100);
+            dos.writeChar('C');
+            dos.writeDouble(15.789);
+            dos.close();
+
+            dis = new DataInputStream(new BufferedInputStream(new FileInputStream(f1)));
+            System.out.println(dis.readByte());
+            System.out.println(dis.readChar());
+            System.out.println(dis.readDouble());
+
+            dis.close();
+        }
+        catch(FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+
+*/
+
+//----------------------------------File Reader/Writer ------------------
+    
+        FileWriter fw;
+        FileReader fr;
+
+        try {
+            fw = new FileWriter(f1);
+            String str = "Moujib 3ammou 7alwa\n";
+            str+="Jims 3ammou chips ??\n";
+
+            fw.write(str);
+            fw.close();
+
+            fr = new FileReader(f1);
+            str = "";
+            int i = 0;
+            while((i = fr.read()) != -1) str += (char)i;
+            System.out.println(str);
+        }catch(FileNotFoundException e) {e.printStackTrace();}
+        catch(IOException e) {e.printStackTrace();}
+
         }
     }

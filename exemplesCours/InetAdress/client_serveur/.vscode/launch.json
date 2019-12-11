@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TCPClientTest",
+            "request": "launch",
+            "mainClass": "TCPClientTest",
+            "projectName": "client_serveur_738912b8"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TCPServerTest",
+            "request": "launch",
+            "mainClass": "TCPServerTest",
+            "projectName": "client_serveur_738912b8"
+        }
+    ]
+}

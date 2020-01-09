@@ -4,13 +4,15 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Server {
+    
+    static ConcurrentHashMap<String, Socket> activeClients = new ConcurrentHashMap<String, Socket>();
     public static void main(String[] args) {
         System.out.println("---Serveur----");
         ServerSocket serverSocket = null;
         int port = 5000;
-        int nbr = 0;
         try {
             serverSocket = new ServerSocket(port);
             System.out.println("Serveur ok sur le port : "+port);
@@ -22,8 +24,7 @@ public class Server {
             Socket clientSocket = null;
             try{
                 clientSocket = serverSocket.accept();
-                nbr++;
-                System.out.println("Client : "+nbr);
+                activeClients.put(clientSocket.getInetAddress().getHostAddress(), clientSocket);
                 executeClient(clientSocket);
             }
             catch(IOException e){
@@ -34,20 +35,18 @@ public class Server {
 
     public static void executeClient(Socket clinSocket) throws IOException {
         try {
-            PrintStream printStream = new PrintStream(clinSocket.getOutputStream());
             InputStreamReader is = new InputStreamReader(clinSocket.getInputStream());
             BufferedReader br = new BufferedReader(is);
 
             String msg = null;
-
             msg = br.readLine();
-          //  Thread.sleep(3000);
 
-            String sendMsg = "Response : "+msg;
-            printStream.println(sendMsg);
-            printStream.flush();
-            printStream.close();
-            System.out.println(msg);
+            for(String clientHost : activeClients.keySet()) {
+                Socket s =  activeClients.get(clientHost);
+                PrintStream printStream = new PrintStream(s.getOutputStream());
+                printStream.println(msg);
+                printStream.flush();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
